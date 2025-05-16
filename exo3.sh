@@ -2,7 +2,18 @@
 
 rm -f ./fifo
 mkfifo ./fifo
+
+mdp=$(grep "^mdp=" configuration.txt | cut -d= -f2 | tr -d '[:space:]')
+
 function interpret () {
+    echo "Donne le mot de passe :"
+    while read ligne_mdp; do
+        if [ "$ligne_mdp" != "$mdp" ]; then
+            echo "Mot de passe incorrect."
+            exit
+        fi
+        break
+    done
 
     echo "Bienvenue, utilisateur."
     CONN_TIME=$(date '+%Y-%m-%d %H:%M:%S')
