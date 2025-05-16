@@ -11,7 +11,8 @@ function interpret () {
     while read line; do
         echo "Debug, reçu == $line ==" >&2
 
-         if [ $line = "exit" ]; then 
+         if [ "$line" = "exit" ]; then 
+            DISCONN_TIME=$(date '+%Y-%m-%d %H:%M:%S')
             echo "Date de déconnexion : $DISCONN_TIME"
             exit
         fi
@@ -25,11 +26,3 @@ while true; do
 done
 
 echo "end."
-
-
-
-
-
-
-
-
