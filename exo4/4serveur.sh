@@ -6,8 +6,6 @@ mkfifo ./fifo
 mdp=$(grep "^mdp=" configuration.txt | cut -d= -f2 | tr -d '[:space:]')
 KEY=$(grep "^cle=" configuration.txt | cut -d= -f2 | tr -d '[:space:]')
 
-echo $KEY
-
 encrypt() {
     echo "$1" | tr 'a-z' "$KEY"
 }
